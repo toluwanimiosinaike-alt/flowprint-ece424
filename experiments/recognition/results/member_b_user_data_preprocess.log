@@ -1,0 +1,21 @@
+﻿PCAP archives: C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\user_data\pcaps_4.tar.gz, C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\user_data\pcaps_5.tar.gz, C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\user_data\pcaps_a.tar.gz, C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\user_data\pcaps_f.tar.gz
+VirusTotal archive: C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\user_data\virustotal.tar.gz
+Preprocessing with the NDSS Reader and TShark: C:\Program Files\Wireshark\tshark.exe
+TShark captures=32, packets=12550, TCP/UDP flows=885, capture_errors=0
+Preprocessed 885 flows from 32 APK hashes into C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\results\member_b_user_data_flows.p
+PCAP captures extracted: 32
+pcaps_4.tar.gz: apps_seen=8, pcaps_extracted=8, pcap_errors=0
+pcaps_5.tar.gz: apps_seen=8, pcaps_extracted=8, pcap_errors=0
+pcaps_a.tar.gz: apps_seen=8, pcaps_extracted=8, pcap_errors=0
+pcaps_f.tar.gz: apps_seen=8, pcaps_extracted=8, pcap_errors=0
+VirusTotal: 8 of 32 selected APK reports found; 1 report errors
+VT 533025b482044fe0ca357f25142c7d5c positives=5/57 scan_date=2016-11-23 22:53:23
+VT 533296f79c8622dd090910acaadfeed8 positives=25/54 scan_date=2016-01-12 06:15:27
+VT 5333440bc94653e827e39034bb1f8f64 positives=0/39 scan_date=2012-10-06 16:10:35
+VT 5337cd6052eaa07672f5190cb274e3b9 positives=31/54 scan_date=2016-01-03 09:24:27
+VT 533c3848efc6603c41b089927552e8b1 positives=28/57 scan_date=2015-01-30 23:37:50
+VT 533c6e4073b0445f8e8a45598a5f77cc positives=30/57 scan_date=2015-03-12 16:40:15
+VT 533ccd660397c1a1e2715cd7dee7986b positives=32/50 scan_date=2014-03-09 14:21:05
+VT 533d816a8f18b69dc417d65e5702e8d3 positives=35/53 scan_date=2016-01-19 03:32:40
+VT ERROR: VirusTotal archive ended unexpectedly: ReadError: unexpected end of data
+VirusTotal annotations written to C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\results\member_b_user_data_flows_virustotal.csv

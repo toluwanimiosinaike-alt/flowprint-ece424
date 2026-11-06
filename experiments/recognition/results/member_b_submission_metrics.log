@@ -1,0 +1,5 @@
+﻿validation window=30.0s accuracy=0.7866 f1=0.7561 support=164
+validation window=10.0s accuracy=0.7866 f1=0.7561 support=164
+test window=30.0s accuracy=0.7750 f1=0.7678 support=200
+test window=10.0s accuracy=0.7500 f1=0.7315 support=200
+Results written to C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS\experiments\recognition\results\member_b_submission_metrics.csv
