@@ -1,3 +1,5 @@
+import asyncio
+
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 import glob
@@ -56,7 +58,11 @@ class Reader(object):
             print("Loading {}...".format(path), end='\r')
 
         # Read pcap file
-        pcap = iter(pyshark.FileCapture(path))
+        #pcap = iter(pyshark.FileCapture(path))
+
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        pcap = iter(pyshark.FileCapture(path, eventloop=loop))
 
         # Initialise result
         result = list()
@@ -67,7 +73,7 @@ class Reader(object):
                 packet = next(pcap)
             except:
                 break
-
+            """
             if not ("TCP" in packet or "UDP" in packet):
                 counter_b += 1
                 continue
@@ -94,6 +100,62 @@ class Reader(object):
                packet.ssl.get("handshake_certificate") is not None:
                 # Get certificate
                 cert = packet.ssl.get('handshake_certificate')
+                # Parse cert to bytes
+                cert = bytes.fromhex(cert.replace(':', ''))
+                # Parse x509 certificate as DER
+                cert = x509.load_der_x509_certificate(cert,
+                                                      default_backend())
+                # Get serial number - TODO extend with other features?
+                d[-1] = cert.serial_number
+            """
+            # Skip packets that are not plain TCP/UDP over IPv4/IPv6.
+            # ICMP error packets contain a copy of a TCP/UDP header, so skip those too.
+            if not ("TCP" in packet or "UDP" in packet) or \
+               "ICMP" in packet or "ICMPV6" in packet:
+                counter_b += 1
+                continue
+
+            # Find the IP layer by name instead of by position
+            if "IP" in packet:
+                ip = packet.ip
+            elif "IPV6" in packet:
+                ip = packet.ipv6
+            else:
+                counter_b += 1
+                continue
+
+            # Find the transport layer by name instead of by position
+            transport = packet.tcp if "TCP" in packet else packet.udp
+
+            if self.verbose:
+                counter_a += 1
+                counter_b += 1
+                print("Loading {}... {}/{} packets".format(path, counter_a, counter_b), end='\r')
+
+            # Get required packet data
+            d = [path,
+                 transport.layer_name,        # Get protocol (tcp/udp)
+                 transport.stream,            # Get stream ID
+                 packet.sniff_timestamp,      # Get packet timestamp
+                 packet.length,               # Get packet length
+                 ip.src,                      # Get source IP or IPv6
+                 ip.dst,                      # Get destination IP or IPv6
+                 transport.srcport,           # Get source port
+                 transport.dstport,           # Get destination port
+                 None]
+
+            # Check whether TLS certificate is in packet
+            # (newer Wireshark versions call this layer "TLS" instead of "SSL")
+            tls_layer = None
+            if "TLS" in packet:
+                tls_layer = packet.tls
+            elif "SSL" in packet:
+                tls_layer = packet.ssl
+
+            if tls_layer is not None and \
+               tls_layer.get("handshake_certificate") is not None:
+                # Get certificate
+                cert = tls_layer.get('handshake_certificate')
                 # Parse cert to bytes
                 cert = bytes.fromhex(cert.replace(':', ''))
                 # Parse x509 certificate as DER

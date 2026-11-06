@@ -1,7 +1,7 @@
 import multiprocessing
 import numpy as np
 from collections import Counter
-from tcluster.distances import precompute, jaccard
+#from tcluster.distances import precompute, jaccard
 
 def closest(sets, items, verbose=False):
     """Find mapping from items to known sets.

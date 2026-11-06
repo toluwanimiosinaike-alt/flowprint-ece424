@@ -52,6 +52,8 @@ class Preprocessor(object):
                 break
             except Exception:
                 print("Reading {} failed".format(file), file=sys.stderr)
+                import traceback
+                traceback.print_exc()
                 continue
             # Append data to X
             X.append(data)
