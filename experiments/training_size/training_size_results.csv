@@ -1,0 +1,5 @@
+training_fraction,training_flows,testing_flows,accuracy,precision,recall,f1_score
+1.0,998,492,1.0,1.0,1.0,1.0
+0.75,748,492,1.0,1.0,1.0,1.0
+0.5,499,492,1.0,1.0,1.0,1.0
+0.25,249,492,1.0,1.0,1.0,1.0

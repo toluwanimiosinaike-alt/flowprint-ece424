@@ -1,0 +1,63 @@
+Total flows: 1490
+Applications: 2
+Training flows: 998
+Testing flows: 492
+
+Running training fraction: 1.0
+Training flows used: 998
+Flows: 1490
+              precision    recall  f1-score   support
+
+     spotify     1.0000    1.0000    1.0000       142
+     youtube     1.0000    1.0000    1.0000       350
+
+    accuracy                         1.0000       492
+   macro avg     1.0000    1.0000    1.0000       492
+weighted avg     1.0000    1.0000    1.0000       492
+
+Results: {'training_fraction': 1.0, 'training_flows': 998, 'testing_flows': 492, 'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1_score': 1.0}
+
+Running training fraction: 0.75
+Training flows used: 748
+Flows: 1240
+              precision    recall  f1-score   support
+
+     spotify     1.0000    1.0000    1.0000       142
+     youtube     1.0000    1.0000    1.0000       350
+
+    accuracy                         1.0000       492
+   macro avg     1.0000    1.0000    1.0000       492
+weighted avg     1.0000    1.0000    1.0000       492
+
+Results: {'training_fraction': 0.75, 'training_flows': 748, 'testing_flows': 492, 'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1_score': 1.0}
+
+Running training fraction: 0.5
+Training flows used: 499
+Flows: 991
+              precision    recall  f1-score   support
+
+     spotify     1.0000    1.0000    1.0000       142
+     youtube     1.0000    1.0000    1.0000       350
+
+    accuracy                         1.0000       492
+   macro avg     1.0000    1.0000    1.0000       492
+weighted avg     1.0000    1.0000    1.0000       492
+
+Results: {'training_fraction': 0.5, 'training_flows': 499, 'testing_flows': 492, 'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1_score': 1.0}
+
+Running training fraction: 0.25
+Training flows used: 249
+Flows: 741
+              precision    recall  f1-score   support
+
+     spotify     1.0000    1.0000    1.0000       142
+     youtube     1.0000    1.0000    1.0000       350
+
+    accuracy                         1.0000       492
+   macro avg     1.0000    1.0000    1.0000       492
+weighted avg     1.0000    1.0000    1.0000       492
+
+Results: {'training_fraction': 0.25, 'training_flows': 249, 'testing_flows': 492, 'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1_score': 1.0}
+
+Experiment complete!
+Results saved to: experiments/training_size/training_size_results.csv
