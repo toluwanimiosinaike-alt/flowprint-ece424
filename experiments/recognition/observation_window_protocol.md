@@ -30,11 +30,9 @@ the test split is not used to select a value.
 The original checkout is at `C:\Users\alext\Downloads\FlowPrint-NDSS-original\FlowPrint-NDSS`;
 the working checkout is `C:\Users\alext\Downloads\FlowPrint-NDSS\FlowPrint-NDSS`.
 A recursive file comparison found no original-only files. Within the shared
-source tree, `experiments/recognition/recognition.py` has identical source
-after normalizing line endings; the raw SHA-256 hashes differ because the
-checkouts use different newline encodings. Therefore, the original FlowPrint
-recognition algorithm and its `Recogniser.evaluate` implementation were not
-changed for this contribution.
+source tree, `experiments/recognition/recognition.py` is byte-for-byte identical
+in both checkouts. Therefore, the original FlowPrint recognition algorithm and
+its `Recogniser.evaluate` implementation were not changed for this contribution.
 
 The Member B-specific changes are:
 
@@ -58,7 +56,7 @@ The Member B-specific changes are:
    archive families without extracting the entire dataset.
 3. **Changed one import line in `experiments/recognition/jaccard.py`.** The
    original imports `precompute` and `jaccard` from `tcluster.distances`; the
-   working copy comments out that import. Those names are unused by the executable
+   working copy removes that import. Those names are unused by the executable
    `closest` path (their remaining mentions are commented-out test code), and
    the dependency was unavailable in the environment. The `closest` and
    `closest_single` implementations themselves are unchanged. This is a

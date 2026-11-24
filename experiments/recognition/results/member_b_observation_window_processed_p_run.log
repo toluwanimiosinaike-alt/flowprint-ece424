@@ -1,0 +1,20 @@
+SANITY CHECK
+PASS: 14 synthetic flows across 3 labels assigned to disjoint chronological train/validation/test splits.
+PASS: baseline window is 30 s; reduced window is 10 s.
+
+DATASET: experiments/data/processed.p
+Loaded flows: 1490
+Labels: spotify=429, youtube=1061
+Split: chronological per label, 60% train / 20% validation / 20% test
+Parameters fixed: batch=300, correlation=0.1, similarity=0.9
+Seed: PYTHONHASHSEED=0
+
+Seeded evaluation:
+validation window=30.0s accuracy=0.2862 f1=0.1274 support=297
+validation window=10.0s accuracy=0.3636 f1=0.2752 support=297
+test window=30.0s accuracy=0.9900 f1=0.9900 support=300
+test window=10.0s accuracy=0.9067 f1=0.9099 support=300
+
+Seeded repeat: byte-for-byte matching metrics CSV.
+Metrics CSV SHA-256:
+D3F9AD5E08449F3ACEC0229C99BA40DF94D36328CBD212AB824896C3FFB06693

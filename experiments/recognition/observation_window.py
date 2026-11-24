@@ -141,7 +141,11 @@ def main(argv=None):
     parser.add_argument("--load", nargs="+",
                         help="Preprocessed FlowPrint pickle file(s), each "
                              "containing (flows, labels).")
-    parser.add_argument("--output", default="results/member_b_window.csv",
+    parser.add_argument(
+                        "--output",
+                        default=os.path.join(
+                            os.path.dirname(os.path.abspath(__file__)),
+                            "results", "member_b_window.csv"),
                         help="CSV results path.")
     parser.add_argument("--min-flows", type=int, default=3,
                         help="Minimum flows per label (default: 3).")
