@@ -1,0 +1,218 @@
+$ C:\Users\Lenovo\AppData\Local\Programs\Python\Python315\python.exe -m flowprint --read results\flows.p --fingerprint results\fingerprints\obs_120s.json -b 120 -w 30 -l 0.5 -a 42
+Fingerprints saved to results\fingerprints\obs_120s.train.json
+Fingerprints saved to results\fingerprints\obs_120s.test.json
+[exit code 0]
+
+$ C:\Users\Lenovo\AppData\Local\Programs\Python\Python315\python.exe -m flowprint --train results\fingerprints\obs_120s.train.json --test results\fingerprints\obs_120s.test.json --recognition
+
+ 200a17b763fa87ef9c6fc3c791aa6c9c
+    Fingerprint(0x17e18456e00) [size=   2] --> 200a17b763fa87ef9c6fc3c791aa6c9c
+
+ 200a1cc523d7185df6549b1d1728832b
+    Fingerprint(0x17e18455150) [size=   3] --> 200a1cc523d7185df6549b1d1728832b
+
+ 200a1d2b59f3fb70e8035a4d12a622e4
+    Fingerprint(0x17e18440e20) [size=   5] --> 200ad0bdae98a8669c8ee8fae44eaec6
+    Fingerprint(0x17e18441040) [size=   4] --> 200ad0bdae98a8669c8ee8fae44eaec6
+    Fingerprint(0x17e18442360) [size=   3] --> 200ad0bdae98a8669c8ee8fae44eaec6
+    Fingerprint(0x17e18442cf0) [size=   2] --> 200ad0bdae98a8669c8ee8fae44eaec6
+
+ 200a20c7062b76cb816e34ac7058a42f
+    Fingerprint(0x17e184419d0) [size=   4] --> 200a20c7062b76cb816e34ac7058a42f
+    Fingerprint(0x17e184569c0) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a23657071186f0834ede7efb29b80
+    Fingerprint(0x17e18443bd0) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18455260) [size=   4] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a3d138fed33cc7e338fdee6517abb
+    Fingerprint(0x17e18443f00) [size=   4] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a4504b0196eb2bc16933ca35478f6
+    Fingerprint(0x17e18455e10) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a490a24a19a4ee50d9e6a0cd02dbd
+    Fingerprint(0x17e184556a0) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a4e8402e6af481b747ce19b774699
+    Fingerprint(0x17e184409e0) [size=   7] --> 200a4e8402e6af481b747ce19b774699
+    Fingerprint(0x17e18456250) [size=   6] --> 200bf49723b313ea1a2c4ee57de8d72e
+
+ 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18454c00) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a6738971d772fe0f2833efccc34bf
+    Fingerprint(0x17e18454160) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18455f20) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200a71b282e4773943ac1836add78e9f
+    Fingerprint(0x17e18440d10) [size=   6] --> 200bf49723b313ea1a2c4ee57de8d72e
+    Fingerprint(0x17e18441260) [size=  10] --> 200a71b282e4773943ac1836add78e9f
+
+ 200a98b98052830a0981aa6b9d74e20a
+    Fingerprint(0x17e18443ce0) [size=   3] --> 200a6bde45c39a00f4830b6c90ef02d6
+
+ 200ac5a2d4b70f4fd6e7361e942ee8cf
+    Fingerprint(0x17e184567a0) [size=   2] --> 200b81accd82ef7cd11bc229abd5ee4c
+    Fingerprint(0x17e184568b0) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200aceb52f343598d815a5469ef109b0
+    Fingerprint(0x17e184406b0) [size=   4] --> 200aceb52f343598d815a5469ef109b0
+    Fingerprint(0x17e18443460) [size=   3] --> 200aceb52f343598d815a5469ef109b0
+    Fingerprint(0x17e18456be0) [size=   3] --> 200aceb52f343598d815a5469ef109b0
+
+ 200ad0bdae98a8669c8ee8fae44eaec6
+    Fingerprint(0x17e18442690) [size=   4] --> 200b194b81d0ab904d07e50e9eff052c
+    Fingerprint(0x17e18456ad0) [size=   4] --> 200ad0bdae98a8669c8ee8fae44eaec6
+
+ 200ad2448dea59486a904fad91906d07
+    Fingerprint(0x17e18443350) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200ad4d014690c4f428feb15d2791cdb
+    Fingerprint(0x17e18441480) [size=   8] --> 200ad4d014690c4f428feb15d2791cdb
+    Fingerprint(0x17e18441e10) [size=   7] --> 200a4e8402e6af481b747ce19b774699
+    Fingerprint(0x17e184559d0) [size=   6] --> 200ad4d014690c4f428feb15d2791cdb
+
+ 200adabf17c7e44ad92677b016ec52a7
+    Fingerprint(0x17e184558c0) [size=   3] --> 200adabf17c7e44ad92677b016ec52a7
+
+ 200af4ad748f0313a2d0618b64fb4e78
+    Fingerprint(0x17e18440c00) [size=   5] --> 200af4ad748f0313a2d0618b64fb4e78
+
+ 200af6c3a06399aa6e612c5b03c0a300
+    Fingerprint(0x17e18443680) [size=   3] --> 200af6c3a06399aa6e612c5b03c0a300
+    Fingerprint(0x17e18454af0) [size=   3] --> 200af6c3a06399aa6e612c5b03c0a300
+
+ 200b194b81d0ab904d07e50e9eff052c
+    Fingerprint(0x17e18442250) [size=   3] --> 200b194b81d0ab904d07e50e9eff052c
+    Fingerprint(0x17e18454050) [size=   4] --> 200b194b81d0ab904d07e50e9eff052c
+    Fingerprint(0x17e18454380) [size=   2] --> 200b194b81d0ab904d07e50e9eff052c
+
+ 200b2d1614cd6ca53e63379a6bea170a
+    Fingerprint(0x17e184417b0) [size=   6] --> 200bf49723b313ea1a2c4ee57de8d72e
+    Fingerprint(0x17e18442be0) [size=   5] --> 200bf49723b313ea1a2c4ee57de8d72e
+    Fingerprint(0x17e18443020) [size=   6] --> 200b2d1614cd6ca53e63379a6bea170a
+    Fingerprint(0x17e18456690) [size=   5] --> 200b2d1614cd6ca53e63379a6bea170a
+
+ 200b32032c2bf9150ee451615b83431e
+    Fingerprint(0x17e18442140) [size=   4] --> 200b32032c2bf9150ee451615b83431e
+
+ 200b40495791368541f13ee3ce77f2e4
+    Fingerprint(0x17e184548d0) [size=   2] --> 200b40495791368541f13ee3ce77f2e4
+
+ 200b4af27a227161255bca7c236b4b76
+    Fingerprint(0x17e18454270) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e184547c0) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18455d00) [size=   4] --> 200b4af27a227161255bca7c236b4b76
+    Fingerprint(0x17e18456f10) [size=   4] --> 200b4af27a227161255bca7c236b4b76
+
+ 200b4b01fc07cdbd7b91efc52475fe10
+    Fingerprint(0x17e184549e0) [size=   3] --> 200b4b01fc07cdbd7b91efc52475fe10
+    Fingerprint(0x17e18455590) [size=   7] --> 200b4b01fc07cdbd7b91efc52475fe10
+    Fingerprint(0x17e18456030) [size=   5] --> 200ad4d014690c4f428feb15d2791cdb
+
+ 200b705f7fcda6326d50dcbc0721c01d
+    Fingerprint(0x17e18442ad0) [size=   4] --> 200b705f7fcda6326d50dcbc0721c01d
+    Fingerprint(0x17e18443ac0) [size=   4] --> 200b705f7fcda6326d50dcbc0721c01d
+
+ 200b81accd82ef7cd11bc229abd5ee4c
+    Fingerprint(0x17e18440af0) [size=   4] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18441ae0) [size=   4] --> 200b81accd82ef7cd11bc229abd5ee4c
+    Fingerprint(0x17e18456470) [size=   2] --> 200b81accd82ef7cd11bc229abd5ee4c
+
+ 200b83b117266d8ffcf24204705aa0f8
+    Fingerprint(0x17e18441590) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e184418c0) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200b8e391f19aea534c07869df6eb62b
+    Fingerprint(0x17e184407c0) [size=   6] --> 200b8e391f19aea534c07869df6eb62b
+    Fingerprint(0x17e184427a0) [size=   7] --> 200b8e391f19aea534c07869df6eb62b
+    Fingerprint(0x17e18443130) [size=   6] --> 200a71b282e4773943ac1836add78e9f
+
+ 200ba87b996f903a549029cc958769a9
+    Fingerprint(0x17e18443570) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18454e20) [size=   2] --> 200ba87b996f903a549029cc958769a9
+
+ 200bb08148a39191687ee7872aff9d7d
+    Fingerprint(0x17e184438a0) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18457020) [size=   2] --> 200ad4d014690c4f428feb15d2791cdb
+
+ 200bb7e485918b9fcabc6881ecb527c8
+    Fingerprint(0x17e18442030) [size=   5] --> 200bb7e485918b9fcabc6881ecb527c8
+    Fingerprint(0x17e18455370) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+    Fingerprint(0x17e18456360) [size=   4] --> 200bb7e485918b9fcabc6881ecb527c8
+
+ 200bc2519aaaffc167507c80932a563b
+    Fingerprint(0x17e184428b0) [size=   4] --> 200bc2519aaaffc167507c80932a563b
+
+ 200bee0756f946b33d9ad6c7663e10cf
+    Fingerprint(0x17e18440f30) [size=   4] --> 200bee0756f946b33d9ad6c7663e10cf
+    Fingerprint(0x17e18456580) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200bf49723b313ea1a2c4ee57de8d72e
+    Fingerprint(0x17e18441370) [size=   8] --> 200bf49723b313ea1a2c4ee57de8d72e
+    Fingerprint(0x17e18442470) [size=   5] --> 200bf49723b313ea1a2c4ee57de8d72e
+    Fingerprint(0x17e184429c0) [size=   7] --> 200bf49723b313ea1a2c4ee57de8d72e
+
+ 200c0351f54206dc6a638c711befbd8d
+    Fingerprint(0x17e18441bf0) [size=   2] --> 200c0351f54206dc6a638c711befbd8d
+    Fingerprint(0x17e18442f10) [size=   3] --> 200a4504b0196eb2bc16933ca35478f6
+    Fingerprint(0x17e18454f30) [size=   3] --> 200a4504b0196eb2bc16933ca35478f6
+
+ 200c04a32a989c253f8ea48cc3b0f81c
+    Fingerprint(0x17e18442e00) [size=   2] --> 200c04a32a989c253f8ea48cc3b0f81c
+
+ 200c04dbbacd61f5a31749b459439761
+    Fingerprint(0x17e18454490) [size=   4] --> 200a6bde45c39a00f4830b6c90ef02d6
+
+ 200c0824f45e4c71fe6bbc33b339c0aa
+    Fingerprint(0x17e184408d0) [size=   4] --> 200c0824f45e4c71fe6bbc33b339c0aa
+    Fingerprint(0x17e18455040) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200c08acbe7f95216d5cc33fe9079686
+    Fingerprint(0x17e18455480) [size=   3] --> 200c08acbe7f95216d5cc33fe9079686
+
+ 200c0fc5ea0bcbc461dd4aa289a8a7ee
+    Fingerprint(0x17e18441f20) [size=   3] --> 200c0fc5ea0bcbc461dd4aa289a8a7ee
+
+ 200c272b30b5424b0c1e3e2a01017a8d
+    Fingerprint(0x17e18443df0) [size=   2] --> 200a4504b0196eb2bc16933ca35478f6
+
+ 200c2e276a35022dea35c93d79d7e758
+    Fingerprint(0x17e18441150) [size=   2] --> 200c2e276a35022dea35c93d79d7e758
+    Fingerprint(0x17e18455bf0) [size=   3] --> 200c2e276a35022dea35c93d79d7e758
+    Fingerprint(0x17e18457130) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200c31a3dbe9ab633ccb32250f9697e2
+    Fingerprint(0x17e18456cf0) [size=   2] --> 200c31a3dbe9ab633ccb32250f9697e2
+
+ 200c500a103d5e6d4ac48a9a70b5d64e
+    Fingerprint(0x17e18442580) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200c59824e6f2b39eb2382a7b2376a1a
+    Fingerprint(0x17e184416a0) [size=   3] --> 200c59824e6f2b39eb2382a7b2376a1a
+
+ 200c635ff922d2fff85e253650331e2c
+    Fingerprint(0x17e18441d00) [size=   5] --> 200c635ff922d2fff85e253650331e2c
+    Fingerprint(0x17e184557b0) [size=   5] --> 200c635ff922d2fff85e253650331e2c
+    Fingerprint(0x17e18455ae0) [size=   7] --> 200c635ff922d2fff85e253650331e2c
+    Fingerprint(0x17e18457240) [size=   5] --> 200c635ff922d2fff85e253650331e2c
+
+ 200c678b6da2080e73c30905716e6e2b
+    Fingerprint(0x17e18443790) [size=   2] --> 200c678b6da2080e73c30905716e6e2b
+
+ 200c73e02db3fba690b2191a07ad00a4
+    Fingerprint(0x17e184546b0) [size=   5] --> 200c73e02db3fba690b2191a07ad00a4
+    Fingerprint(0x17e18456140) [size=   2] --> 200c73e02db3fba690b2191a07ad00a4
+
+ 200c78af9d5272a1a6e94d1bea8b0664
+    Fingerprint(0x17e184545a0) [size=   3] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200c791f89b14dd22aad62a5958bc249
+    Fingerprint(0x17e184439b0) [size=   2] --> 200a5f1d56e0cd9240fce6b75475aea7
+
+ 200c8d43457df5ca70ce16beea657a59
+    Fingerprint(0x17e18443240) [size=   3] --> 200c8d43457df5ca70ce16beea657a59
+    Fingerprint(0x17e18454d10) [size=   3] --> 200c59824e6f2b39eb2382a7b2376a1a
+[exit code 0]
+

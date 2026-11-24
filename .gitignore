@@ -1,3 +1,7 @@
 *.pcap
 *.pcapng
 .idea/
+
+experiments/data/
+*.p
+__pycache__/
