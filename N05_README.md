@@ -1,10 +1,10 @@
 # N05 – Stress-Testing FlowPrint (ECE 424, Fall 2026)
 
 **Team:** Tolu Osinaike, Alex Tornopsky, Jordan Furtado
-**Paper:** van Ede et al., *FlowPrint: Semi-Supervised Mobile-App Fingerprinting on Encrypted Network Traffic*, NDSS 2020
-**Code base:** authors' repository, `NDSS` branch (https://github.com/Thijsvanede/FlowPrint/tree/NDSS), plus the authors' released `flowprint` pip package
+**Paper:** T. van Ede et al., "FlowPrint: Semi-Supervised Mobile-App Fingerprinting on Encrypted Network Traffic," NDSS 2020. doi: 10.14722/ndss.2020.24412. PDF: https://www.ndss-symposium.org/wp-content/uploads/2020/02/24412-paper.pdf
+**Code base:** authors' repository, `NDSS` branch (https://github.com/Thijsvanede/FlowPrint/tree/NDSS)
 
-This file documents the baseline reproduction and dataset preparation (owner: Tolu Osinaike) and how the stress-test runs (observation window: Alex; training-set size: Jordan) were produced.
+This file documents the **baseline reproduction and dataset preparation** (owner: Tolu Osinaike). The observation-window and training-set-size experiments are documented by their owners in `experiments/recognition/` (Alex) and `experiments/training_size/` (Jordan).
 
 ---
 
@@ -15,10 +15,10 @@ This file documents the baseline reproduction and dataset preparation (owner: To
 | OS | Windows 11 (64-bit), CPU only (Intel i7-1255U, 16 GB RAM) |
 | Python | 3.15.1 |
 | tshark (Wireshark) | 4.6.9 |
-| Python packages | `flowprint` (pip), `argformat`, `scikit-learn`, `numpy`, `pyshark`, `networkx`, `cryptography` |
+| Python packages | `scikit-learn`, `numpy`, `pyshark`, `networkx`, `cryptography` (installed via `pip install flowprint`) |
 
 ```powershell
-pip install flowprint argformat
+pip install flowprint
 # tshark: install Wireshark, then add it to PATH for the session
 $env:Path += ";C:\Program Files\Wireshark"
 tshark --version
@@ -28,16 +28,14 @@ tshark --version
 
 - **Source:** Andrubis subset linked in the authors' `datasets/README.md`:
   https://drive.google.com/drive/folders/1IXa3IJS9zJS4vggpyU7yda8f7jZjz4gB
-- **Used:** 62 apps, 124 captures (2 sandbox runs per app). Captures are not committed (size); the exact files used are listed in `results/used_captures.tsv`.
+- **Used:** 62 apps, 124 captures (2 sandbox runs per app), 1,405 flows. Captures are not committed (size); the exact files used and their labels are listed in `results/used_captures.tsv`.
 - **Layout on disk:** `experiments/data/Andrubis/<app hash>/<run hash>/allowed_traffic.dump`
 - **Labels:** each capture is labelled by its top-level `<app hash>` folder (all files share the name `allowed_traffic.dump`, so the folder is the only app identifier). The download did not include the authors' `appdict.p` / `vt.p`, so labels are hashes, not app names, and no benign/malicious split is possible.
 
 ## 3. What was run
 
-### 3a. Baseline with the NDSS experiment code (Tolu)
-
 ```powershell
-# Build flows with the NDSS preprocessor (same 62 apps, same labels)
+# Build flows with the NDSS preprocessor (62 apps, labelled by app folder)
 python prep_andrubis_ndss.py experiments\data\Andrubis results\flows_ndss.p --max-apps 62
 
 cd experiments\recognition
@@ -49,22 +47,7 @@ python recognition_split.py -l ..\..\results\flows_ndss.p -b 300 -w 30 -c 0.1 -s
 cd ..\..
 ```
 
-Parameters are the paper's defaults: batch 300 s, window 30 s, correlation 0.1, similarity 0.9.
-
-### 3b. Stress tests with the FlowPrint package (Alex, Jordan)
-
-```powershell
-python run_experiments.py experiments\data\Andrubis 62   # prep + 6 runs, random_state 42
-python compute_metrics.py                                # scores the logs -> results\metrics.csv
-```
-
-| Run | Batch (observation) | Window | Test fraction |
-|---|---|---|---|
-| baseline | 300 s | 30 s | 0.50 |
-| obs_120s / obs_60s / obs_30s | 120 / 60 / 30 s | 30 s | 0.50 |
-| train_25pct / train_10pct | 300 s | 30 s | 0.75 / 0.90 |
-
-The package's `--recognition` mode prints one prediction per test fingerprint and no scores; `compute_metrics.py` parses those lines and computes accuracy and weighted precision/recall/F1 **per fingerprint**.
+Parameters are the paper's defaults: batch 300 s, window 30 s, correlation 0.1, similarity 0.9. Expected output of the second run: `Number of flows: 1405`, `Flows: 1405`, `Accuracy : 0.7328`.
 
 ## 4. Modification to the authors' code
 
@@ -84,43 +67,36 @@ This returns before the train/test split, so the released script **trains and te
 
 ## 5. Results
 
-### Baseline (per-flow scoring, 62 apps, 1405 flows)
+Per-flow scoring, 62 apps, 1,405 flows.
 
 | Run | Accuracy | Precision | Recall | F1 | Log |
 |---|---|---|---|---|---|
-| Paper, Table IV, Andrubis, apps ≥1 flow | 0.5871 | 0.5842 | 0.5871 | 0.5856 | (paper) |
+| Paper [1, Table IV], Andrubis, apps ≥1 flow | 0.5871 | 0.5842 | 0.5871 | 0.5856 | (paper) |
 | NDSS code, train/test split restored (`PYTHONHASHSEED=0`) | **0.7328** | 0.7291 | 0.7328 | 0.7189 | `results/logs/ndss_baseline_split.log` (repeat: `ndss_baseline_split_check.log`) |
 | NDSS code as released (tests on training data) | 0.9744 | 0.9755 | 0.9744 | 0.9745 | `results/logs/ndss_baseline.log` |
 
-### Stress tests (per-fingerprint scoring, FlowPrint package)
-
-| Run | Test fingerprints | Accuracy | Precision | Recall | F1 |
-|---|---|---|---|---|---|
-| baseline (300 s, 50% train) | 92 | 0.5761 | 0.6620 | 0.5761 | 0.5900 |
-| obs_120s | 102 | 0.5686 | 0.6664 | 0.5686 | 0.5833 |
-| obs_60s | 109 | 0.5229 | 0.6618 | 0.5229 | 0.5466 |
-| obs_30s | 118 | 0.4746 | 0.5806 | 0.4746 | 0.4839 |
-| train_25pct | 112 | 0.3750 | 0.4091 | 0.3750 | 0.3641 |
-| train_10pct | 108 | 0.2037 | 0.2640 | 0.2037 | 0.2049 |
-
-Source: `results/metrics.csv`, computed from `results/logs/*.log`.
+0.7328 falls inside the paper's own Andrubis range across its minimum-flow filters (0.503 to 0.811, [1, Table IV]). It is higher than the ≥1-flow row mainly because we choose among 62 apps rather than thousands, and the authors' script trains on 67% of flows rather than 50%.
 
 ## 6. Limitations
 
-- 62 apps vs. thousands in the paper; a single run (random_state 42) per setting, so differences of 1–2 points are within noise.
-- FlowPrint's clustering depends on the iteration order of Python sets, which changes with Python's per-process hash seed. Without a fixed seed, the NDSS baseline varied between runs (we observed accuracy 0.718 to 0.733). The reported baseline uses `PYTHONHASHSEED=0`; two runs gave identical results. The stress-test runs and the as-released 0.9744 run were not seeded.
-- NDSS baseline uses a 67/33 random flow split; the paper splits each app's traffic 50:50. Stress tests use a random 50/50 (or 25/75, 10/90) split, not a separate validation/test split.
-- Stress-test scores are per fingerprint, the NDSS baseline and the paper are per flow — compare trends, not absolute values, across the two.
+- 62 apps vs. thousands in the paper; a single seeded run, so differences of 1–2 points are within noise.
+- FlowPrint's clustering depends on the iteration order of Python sets, which changes with Python's per-process hash seed. Without a fixed seed the baseline varied between runs (we observed accuracy 0.718 to 0.733). The reported baseline uses `PYTHONHASHSEED=0`; two runs gave identical results. The as-released 0.9744 run was not seeded.
+- The authors' script uses a 67/33 random flow split; the paper describes a 50:50 split of each app's traffic.
 - Unseen-app detection (proposal extension) was not run.
 
 ## 7. Files
 
 | File | Purpose |
 |---|---|
-| `prep_andrubis.py` | Andrubis captures → labelled flows (pip package format) |
-| `prep_andrubis_ndss.py` | Same, using the NDSS preprocessor (for `recognition.py`) |
-| `run_experiments.py` | Runs the 6 stress-test configurations |
-| `compute_metrics.py` | Scores the stress-test logs → `results/metrics.csv` |
+| `prep_andrubis_ndss.py` | Andrubis captures → labelled flows, using the NDSS preprocessor |
 | `experiments/recognition/recognition_split.py` | NDSS recognition script with the train/test split restored |
-| `results/logs/` | Raw output of every run |
-| `results/used_captures.tsv` | Exact captures and labels used |
+| `results/logs/ndss_baseline.log`, `ndss_baseline_split.log`, `ndss_baseline_split_check.log` | Raw output of the baseline runs |
+| `results/used_captures.tsv` | Exact captures and labels used (written by `prep_andrubis.py`, which selects the same 62 apps and labels) |
+
+`prep_andrubis.py`, `run_experiments.py`, `compute_metrics.py` and `results/metrics.csv` are exploratory runs with the pip package; they are not part of the results reported here.
+
+## References
+
+[1] T. van Ede, R. Bortolameotti, A. Continella, J. Ren, D. J. Dubois, M. Lindorfer, D. Choffnes, M. van Steen, and A. Peter, "FlowPrint: Semi-Supervised Mobile-App Fingerprinting on Encrypted Network Traffic," in *Proc. Network and Distributed System Security Symposium (NDSS)*, 2020. doi: 10.14722/ndss.2020.24412.
+
+[2] M. Lindorfer, M. Neugschwandtner, L. Weichselbaum, Y. Fratantonio, V. van der Veen, and C. Platzer, "ANDRUBIS – 1,000,000 Apps Later: A View on Current Android Malware Behaviors," in *Proc. BADGERS*, 2014.
