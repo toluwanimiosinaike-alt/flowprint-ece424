@@ -1,14 +1,36 @@
 from collections import Counter
+#That line imports Counter from Python's built-in collections module.
+# It's part of the standard library
+
+#A Counter is a dictionary that counts things.
+# You give it a list (or any iterable),
+# and it maps each distinct item to how many times that item appears
 from sklearn.utils import check_random_state
 import csv
 import json
+#loads Python's built-in json module,
+# which is also part of the standard library
 import numpy as np
 
 from cryptography.x509 import oid
+#cryptography is a third-party package.
+#cryptography.X509is the part of the package that handles X.509 certificates
+
+#C:\Users\<you>\AppData\Local\Programs\Python\Python3XX\Lib\site-packages\cryptography\x509\oid.py
 
 # TODO
+
+#These two lines import Matplotlib,
+# Python's most widely used plotting library.
+# It's third-party
+
 import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt is the part you use to actually draw plots.
+# plt is the universal nickname for it.
 import matplotlib as mpl
+#import matplotlib as mpl is the top-level package.
+# It's mainly used for global settings and helpers,
+# not for drawing
 
 class _Cluster_(object):
 
@@ -29,12 +51,15 @@ class _Cluster_(object):
         # Initialise variables
         self.identifier  = identifier
         self.min_samples = min_samples
+        #samples [], a list of flow objects
         self.samples  = []
         self.destinations = set()
         self.certificates = set()
         self.labels = Counter()
 
         # Add each datapoint
+        #all the items in samples, are passed into
+        # the .add method one at a time.
         for X in samples:
             self.add(X)
 
@@ -51,9 +76,14 @@ class _Cluster_(object):
             """
         # Add datapoint
         self.samples.append(X)
+        #self.labels starts empty, as Counter().
+        # Each time a flow is added,
+        # update([y]) increments the tally(how many times the label appears) for that flow's label
         self.labels.update([y])
         # Update pointers
+        #making a set of (ip, port) destination pairs
         self.destinations.add(X.destination())
+        #add everything from X.certificates into self.certificates
         self.certificates |= X.certificates
 
     def merge(self, other):
@@ -65,6 +95,9 @@ class _Cluster_(object):
                 Other cluster object to merge with.
             """
         # Only merge in case other is _Cluster_ object
+        # isinstance() is a built-in Python function
+        # that checks whether an object is of a given type (or a subclass of it)
+        # and returns True or False.
         if isinstance(other, _Cluster_):
             # Merge two clusters
             self.samples.extend(other.samples)
@@ -75,12 +108,22 @@ class _Cluster_(object):
 
     def match(self, other):
         """Return whether clusters match."""
+        # self.destinations & other.destinations gives the set of (IP, port)
+        # pairs both clusters share.
+
+        #len(...) counts how many shared pairs there are.
+
+        # with "or", Python just choose one of the values.
+        #0 is false, while any postive number is true
+
         return len(self.destinations & other.destinations) or\
                len(self.certificates & other.certificates)
 
     def get_id(self):
         """Returns identifier of cluster or -1 if anomalous,
            i.e. number of samples do not exceed min_samples."""
+
+        #the code uses cluster size to decide whether a cluster is real or just noise.
         if len(self.samples) >= self.min_samples:
             return self.identifier
         else:
@@ -173,6 +216,7 @@ class _Cluster_(object):
         return hash(self.identifier)
 
 
+#The Clusterer that manages Clusters
 class Cluster(object):
 
     def __init__(self, min_samples=1, load=None):
