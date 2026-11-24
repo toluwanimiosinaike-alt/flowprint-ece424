@@ -15,8 +15,9 @@ simulate a shorter packet capture.
 
 The working checkout was compared with
 `C:\Users\alext\Downloads\FlowPrint-NDSS-original\FlowPrint-NDSS`.
-The shared `experiments/recognition/recognition.py` file is byte-for-byte
-identical in both trees. Thus Member B did not change FlowPrint's core
+The shared `experiments/recognition/recognition.py` source is identical after
+normalizing line endings; the files differ in newline encoding, so their raw
+SHA-256 hashes differ. Thus Member B did not change FlowPrint's core
 recognition, clustering, or fingerprinting algorithms.
 
 The following changes implement the experiment around the existing baseline:
@@ -40,7 +41,7 @@ The following changes implement the experiment around the existing baseline:
    sample.
 3. **One import cleanup in `experiments/recognition/jaccard.py`.** The original
    has an import of `precompute` and `jaccard` from `tcluster.distances`; the
-   working copy removes it. These imported names are unused by the active
+   working copy comments out that unused import. These imported names are unused by the active
    `closest` matching path, and the dependency was unavailable in the run
    environment. The executable matching functions were not changed.
 4. **Protocol, run logs, and outputs.** These additions document the
