@@ -1,0 +1,5 @@
+validation window=30.0s accuracy=0.5271 f1=0.4358 support=258
+validation window=10.0s accuracy=0.4147 f1=0.3437 support=258
+test window=30.0s accuracy=0.4789 f1=0.3922 support=332
+test window=10.0s accuracy=0.4096 f1=0.3380 support=332
+Results written to C:\Users\alext\Downloads\flowprint-ece424-NDSS\flowprint-ece424-NDSS\experiments\recognition\results\member_b_62app_flows_ndss_metrics.csv
